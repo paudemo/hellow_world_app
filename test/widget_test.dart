@@ -7,13 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:hellow_world_app/main.dart';
+import 'package:hellow_world_app/app1/main_counter_app.dart';
 
 void main() {
   testWidgets('counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const MyCounterApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
