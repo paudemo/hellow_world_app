@@ -1,24 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hellow_world_app/presentation/screens/counter/counter_functions_screen.dart';
+
+import 'app1/main_counter_app.dart';
+import 'app2_yes_no_app/main_yes_no_app.dart';
 
 void main() {
-  runApp(const MyApp());
-}
+  //App Counter
+  //runApp(const MyCounterApp());
 
-
-class MyApp extends StatelessWidget{
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: Colors.blue
-      ),
-      home: const CounterFunctionsScreen()
-    );
-  }
-
+  //Yes No App
+  runApp(const MyYesNoApp());
 }
