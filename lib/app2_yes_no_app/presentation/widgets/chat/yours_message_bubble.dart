@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'package:shimmer/shimmer.dart';
 
+import '../../../domain/entities/message.dart';
+
 class YoursMessageBubble extends StatelessWidget {
-  const YoursMessageBubble({super.key});
+  const YoursMessageBubble({super.key, required this.message});
+
+  final Message message;
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -15,17 +20,17 @@ class YoursMessageBubble extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
               color: colors.secondary, borderRadius: BorderRadius.circular(20)),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
-              'Hola mundo',
-              style: TextStyle(color: Colors.white),
+              message.text,
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
         const SizedBox(height: 5),
 
-        _ImgBubble(),
+        _ImgBubble(imageUrl: message.imageUrl??''),
 
         const SizedBox(height: 10),
       ],
@@ -34,6 +39,10 @@ class YoursMessageBubble extends StatelessWidget {
 }
 
 class _ImgBubble extends StatelessWidget {
+  final String imageUrl;
+
+  const _ImgBubble({required this.imageUrl});
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -41,7 +50,7 @@ class _ImgBubble extends StatelessWidget {
     return ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: Image.network(
-          'https://yesno.wtf/assets/yes/7-653c8ee5d3a6bbafd759142c9c18d76c.gif',
+          imageUrl,
           width: size.width * 0.7,
           height: 150,
           fit: BoxFit.cover,
